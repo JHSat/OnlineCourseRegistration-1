@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Session;
+use App\Department;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -20,8 +21,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        $departments = Department::all();
         $profile = User::find(Auth::User()->id);
-        return view('student.edit',compact('profile'));
+        return view('student.edit',compact('profile','departments'));
     }
 
     /**
@@ -86,10 +88,17 @@ class ProfileController extends Controller
             'contact_no' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
         ]);
+        $department = Department::find($request->department_id);
 
 
         $profile = User::find($id);
         $profile->name = $request->name;
+        $profile->department_id =  $request->department_id;
+        $profile->department_name =  $department->name;
+        $profile->year =  $request->year;
+        $profile->term =  $request->term;
+        $profile->session =  $request->session;
+
         $profile->email =  $request->email;
         $profile->contact_no =  $request->contact_no;
         $profile->password =  $request->password;

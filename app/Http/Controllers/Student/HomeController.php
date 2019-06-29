@@ -79,7 +79,7 @@ class HomeController extends Controller
 
 
        Session::flash('success', 'You have successfully completed registration.');
-       return view('student.index');
+       return redirect('student/home');
     }
 
 

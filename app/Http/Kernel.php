@@ -4,6 +4,8 @@ namespace App\Http;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\StudentMiddleware;
 use App\Http\Middleware\HeadMiddleware;
+use App\Http\Middleware\ProvostMiddleware;
+use App\Http\Middleware\AccountantMiddleware;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -65,5 +67,7 @@ class Kernel extends HttpKernel
         'admin' => AdminMiddleware::class,
         'student' => StudentMiddleware::class,
         'head' => HeadMiddleware::class,
+        'provost' => ProvostMiddleware::class,
+        'accountant' => AccountantMiddleware::class,
     ];
 }

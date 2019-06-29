@@ -8,7 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Online Course Registration') }}</title>
+    <!-- Bootstrap CSS -->
+	 <link rel="stylesheet" href="{{asset('css/dataTables.bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+	
 
     
     <!-- Fonts -->
@@ -35,41 +39,22 @@
             <ul class="navbar-nav">
                 <span class="break"></span>
               <li class="nav-item active">
-                <a class="nav-link" href="{{'/'}}">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{'/'}}">Home <span class="sr-only">(current)</span></a>
             </li>
             <span class="break"></span>
+            
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('student.offeredcourselist')}}">Offered Course list</a>
-            </li>
-            <span class="break"></span>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Registration</a>
-                <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ route('student.startregistration')}}">Start registration</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ route('student.selectcourse.index') }}">Select subject</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ route('student.updateregistration')}}">Update registration</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ route('student.selectcourse.edit',Auth::user()->id)}}">Update selected subject</a>
-                  <div class="dropdown-divider"></div>         
-                </div>
-              </li>
-            <span class="break"></span>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('student.status.index') }}">Check Status</a>
+                <a class="nav-link" href="{{route('accountant.status.index')}}">Status</a>
             </li>
             <span class="break"></span>
             <li class="nav-item">
                 <a class="nav-link" href="#">Payment</a>
             </li>
+
             <span class="break"></span>
+            
             <li class="nav-item">
-                <a class="nav-link" href="#">Final Print</a>
-            </li>
-            <span class="break"></span>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('student.profile.index') }}">Profile</a>
+                <a class="nav-link" href="{{route('accountant.profile.index')}}">Profile</a>
             </li>
             <span class="break"></span>
             <li class="nav-item">
@@ -102,17 +87,15 @@
     @endif
 </script> --}}
 
-<script>
+<script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
 
-        $('.date-own').datepicker({
-                 minViewMode: 2,
-                 format: 'yyyy'
-               });
-        
-          function myFunction(e) {
-            document.getElementById("myText").value =  parseInt(e.target.value) + 1;
-        }
-        </script>
+  <script>
+    $(function () {
+      $('#example1').DataTable()
+      
+    })
+    </script>
+    @yield('script')
 
 </body>
 </html>

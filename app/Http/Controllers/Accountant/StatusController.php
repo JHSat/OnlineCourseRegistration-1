@@ -1,20 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Student;
+namespace App\Http\Controllers\Accountant;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Selectcourse;
+use App\User;
+use DB;
 
-use Illuminate\Support\Facades\Auth;
-use Session;
-use DB; 
-
-use App\Department;
-use App\Course;
-use App\Hall;
-use App\Registeruser;
-
-class RegisterController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,9 +17,8 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
-        $halls = Hall::all();
-        return view("student.startregister", compact('departments','halls'));
+        $statuses = Selectcourse::all();
+        return view('accountant.status.index',compact('statuses'));
     }
 
     /**
@@ -68,7 +61,18 @@ class RegisterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $status = Selectcourse::find($id);
+        $status->payment_status = 2;
+        $status->save();
+        return redirect()->route('accountant.status.index');
+    }
+
+    public function unconfirmed($id)
+    {
+       $status = Selectcourse::find($id);
+        $status->payment_status = 1;
+        $status->save();
+        return redirect()->route('accountant.status.index');
     }
 
     /**
@@ -80,28 +84,7 @@ class RegisterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'year'          => 'required|not_in:0',
-            'term'          => 'required',
-            'session'       => 'required',
-            'department_id' => 'required',
-            'halls_id'      => 'required',
-        ]);
-
-        $registration = Registeruser::find($id);
-        $registration->user_id       = Auth::User()->id;
-       $registration->year          = $request->year;
-       $registration->term          = $request->term;
-       $registration->session       = $request->session;
-       $registration->department_id = $request->department_id;
-       $registration->halls_id       = $request->halls_id;
-       $registration->save();
-
-
-       Session::flash('success', 'You have successfully updated registration information');
-      // return view('student.index');
-      return redirect('student/home');
-
+        //
     }
 
     /**
@@ -112,6 +95,6 @@ class RegisterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

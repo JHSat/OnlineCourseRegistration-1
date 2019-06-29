@@ -44,6 +44,8 @@
                                                 <select name="role_id">
                                                     <option value="2">Student</option>
                                                     <option value="3">Head</option>
+                                                    <option value="4">Provost</option>
+                                                    <option value="5">Accountant</option>
                                                     <option value="1">Admin</option>
                                                 </select>
                                             </td>

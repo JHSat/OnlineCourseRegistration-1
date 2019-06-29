@@ -52,6 +52,12 @@ class SelectcourseController extends Controller
         $check = new Selectcourse();
         $check->user_id = Auth::user()->id;
         $check->course_id = collect($request->course_id)->implode(',');
+        $check->student_name = Auth::user()->name;
+        $check->department_id =  Auth::user()->department_id;
+        $check->department_name = Auth::user()->department_name;
+        $check->session = Auth::user()->session;
+        $check->year = Auth::user()->year;
+        $check->term = Auth::user()->term;
         
         //return $check;
        $check->save();

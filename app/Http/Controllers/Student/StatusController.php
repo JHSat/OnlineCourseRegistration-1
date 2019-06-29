@@ -4,17 +4,11 @@ namespace App\Http\Controllers\Student;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\Auth;
-use Session;
-use DB; 
+use App\Selectcourse;
+use DB;
 
-use App\Department;
-use App\Course;
-use App\Hall;
-use App\Registeruser;
-
-class RegisterController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,9 +17,8 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
-        $halls = Hall::all();
-        return view("student.startregister", compact('departments','halls'));
+        $status = DB::table('selectcourses')->where('user_id', Auth::user()->id)->first();
+        return view('student.status.index',compact('status'));
     }
 
     /**
@@ -80,28 +73,7 @@ class RegisterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'year'          => 'required|not_in:0',
-            'term'          => 'required',
-            'session'       => 'required',
-            'department_id' => 'required',
-            'halls_id'      => 'required',
-        ]);
-
-        $registration = Registeruser::find($id);
-        $registration->user_id       = Auth::User()->id;
-       $registration->year          = $request->year;
-       $registration->term          = $request->term;
-       $registration->session       = $request->session;
-       $registration->department_id = $request->department_id;
-       $registration->halls_id       = $request->halls_id;
-       $registration->save();
-
-
-       Session::flash('success', 'You have successfully updated registration information');
-      // return view('student.index');
-      return redirect('student/home');
-
+        //
     }
 
     /**

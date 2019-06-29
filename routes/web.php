@@ -28,15 +28,36 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function (){
     Route::get('dashboard','DashboardController@index')->name('dashboard');
+
     
   
 });
 
 
-    Route::group(['as'=>'head.','prefix'=>'head','namespace'=>'Head','middleware'=>['auth','head']], function (){
+
+Route::group(['as'=>'head.','prefix'=>'head','namespace'=>'Head','middleware'=>['auth','head']], function (){
     Route::get('dashboard','DashboardController@index')->name('dashboard');
-    
-  
+    Route::resource('profile','ProfileController');
+    Route::resource('status','StatusController');
+    Route::get('unconfirmed/{edit}','StatusController@unconfirmed')->name('unconfirmed');
+
+});
+
+
+Route::group(['as'=>'provost.','prefix'=>'provost','namespace'=>'Provost','middleware'=>['auth','provost']], function (){
+    Route::get('dashboard','DashboardController@index')->name('dashboard');
+    Route::resource('profile','ProfileController');
+    Route::resource('status','StatusController');
+    Route::get('unconfirmed/{edit}','StatusController@unconfirmed')->name('unconfirmed');
+
+});
+
+Route::group(['as'=>'accountant.','prefix'=>'accountant','namespace'=>'Accountant','middleware'=>['auth','accountant']], function (){
+    Route::get('dashboard','DashboardController@index')->name('dashboard');
+    Route::resource('profile','ProfileController');
+    Route::resource('status','StatusController');
+    Route::get('unconfirmed/{edit}','StatusController@unconfirmed')->name('unconfirmed');
+
 });
 
 
@@ -54,6 +75,9 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
    
     Route::resource('register','RegisterController');
     Route::resource('selectcourse','SelectcourseController');
+
+    Route::resource('status','StatusController');
+
 });
 
 
