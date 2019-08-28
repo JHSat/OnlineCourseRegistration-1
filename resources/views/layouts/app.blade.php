@@ -91,6 +91,18 @@
 <main class="py-4">
     @yield('content')
 </main>
+
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+          <a href="#"> website.com</a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+      <!-- Footer -->
 </div>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('js/toastr.min.js')}}"></script>

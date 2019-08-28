@@ -44,14 +44,22 @@
             <span class="break"></span>
             
             <li class="nav-item">
-                <a class="nav-link" href="{{route('provost.status.index')}}">Status</a>
+                <a class="nav-link" href="{{route('admin.department.index')}}">Department</a>
             </li>
             <span class="break"></span>
-           
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.course.index')}}">Course</a>
+            </li>
+            
+            <span class="break"></span>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.user.index')}}">User</a>
+            </li>
+            
             <span class="break"></span>
             
             <li class="nav-item">
-                <a class="nav-link" href="{{route('provost.profile.index')}}">Profile</a>
+                <a class="nav-link" href="{{route('admin.profile.index')}}">Profile</a>
             </li>
             <span class="break"></span>
             <li class="nav-item">

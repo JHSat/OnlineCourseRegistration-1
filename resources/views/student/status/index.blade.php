@@ -3,7 +3,7 @@
 <div class="container" >
   <div class="row justify-content-center">
     <div class="col-md-12 content">
-        <h3>show message</h3>
+      <!--  <h3>show message</h3> -->
 
     
         <div class="circle list-inline-item">

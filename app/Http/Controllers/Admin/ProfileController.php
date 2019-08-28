@@ -1,31 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Student;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Session;
-use DB;
 
-use App\Department;
-use App\Course;
-use App\Hall;
-use App\Registeruser;
+use Illuminate\Support\Facades\Hash;
 
-class RegisterController extends Controller
+class ProfileController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $departments = Department::all();
-        $halls = Hall::all();
-        return view("student.startregister", compact('departments','halls'));
+    {   
+        $profile = User::find(Auth::User()->id);
+        return view('admin.dashboard.edit',compact('profile'));
     }
 
     /**
@@ -80,28 +76,28 @@ class RegisterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'year'          => 'required|not_in:0',
-            'term'          => 'required',
-            'session'       => 'required',
-            'department_id' => 'required',
-            'halls_id'      => 'required',
+         $this->validate($request,[
+            'name' => 'required|string|max:255',
+            
+            'email' => [
+                'required',
+                Rule::unique('users')->ignore($id),
+            ],
+            'contact_no' => 'required|string|max:255',
+            'password' => 'required|string|min:6|confirmed',
         ]);
 
-        $registration = Registeruser::find($id);
-        $registration->user_id       = Auth::User()->id;
-       $registration->year          = $request->year;
-       $registration->term          = $request->term;
-       $registration->session       = $request->session;
-       $registration->department_id = $request->department_id;
-       $registration->halls_id       = $request->halls_id;
-       $registration->save();
 
-
-       Session::flash('success', 'You have successfully updated registration information');
-      // return view('student.index');
-      return redirect('student/home');
-
+        $profile = User::find($id);
+        $profile->name = $request->name;
+        $profile->email =  $request->email;
+        $profile->contact_no =  $request->contact_no;
+        $profile->password =  $request->password;
+        $profile->password = Hash::make($request->password);
+        
+        $profile->save();
+        Session::flash('success', 'You have successfully updated your information.');
+        return redirect()->route('admin.profile.index');
     }
 
     /**
@@ -110,7 +106,7 @@ class RegisterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+     public function destroy($id)
     {
         //
     }

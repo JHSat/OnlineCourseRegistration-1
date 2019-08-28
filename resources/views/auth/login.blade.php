@@ -30,7 +30,8 @@
                     <div class="card">
                         <div class="card-body">
                             <img class="img-fluid" src="{{ asset('images/header.jpg') }}"/>
-                            <marquee class="marquee">Welcome to Online Course Registration Portal !</marquee>
+                           <!-- <marquee class="marquee">Welcome to Online Course Registration Portal !</marquee>
+                           -->
                             <div class="content">
                                 <h3>LOGIN INFORMATION</h3>
                                 <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
@@ -43,9 +44,9 @@
                                             <td>
                                                 <select name="role_id">
                                                     <option value="2">Student</option>
-                                                    <option value="3">Head</option>
-                                                    <option value="4">Provost</option>
-                                                    <option value="5">Accountant</option>
+                                                    <option value="3">Department</option>
+                                                    <option value="4">Hall</option>
+                                                    <option value="5">Register</option>
                                                     <option value="1">Admin</option>
                                                 </select>
                                             </td>
@@ -72,7 +73,7 @@
                                         </tr>
                                     </table>
                                 </form>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>
