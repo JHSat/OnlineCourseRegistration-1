@@ -1,5 +1,6 @@
 
 # Online Course Registration System for NSTU
+![Screenshot](https://drive.google.com/open?id=1Akn8uU6xBZMGKVAi9W9GSv1nCsQoIoER)
 
 ## Project Design
 Design is the first step in the development phase for any techniques and principles for the purpose 
