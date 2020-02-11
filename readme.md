@@ -14,6 +14,7 @@ There are five types of user involved in the process:
 5.  Register Official
 6.  Admin
 Functionalities are different to each user.
+![ER Diagram](https://github.com/Santho07/OnlineCourseRegistration/blob/master/resources/Annotation%202020-02-11%20192345.jpg)
 
 ## Feasibility Study
 A feasibility study is used to determine the viability of an idea, such as ensuring a project is legally, 
@@ -44,3 +45,7 @@ is also very less. Hence this project has good economic feasibility.
 As this PHP component is very easy to operate for the software engineers and easy to use. So this 
 project has a good operational feasibility. Hence this project is technically, economically as well 
 as operationally feasible.
+
+## Development
+![Database Snapshot](https://github.com/Santho07/OnlineCourseRegistration/blob/master/resources/Annotation%202020-02-11%20192544.jpg)
+![Database Snapshot](https://github.com/Santho07/OnlineCourseRegistration/blob/master/resources/Annotation%202020-02-11%20192558.jpg)
