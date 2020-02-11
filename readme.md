@@ -22,14 +22,16 @@ feasible,cost-effective and profitable.
 In this section discussed about the feasibility study of project. It includes the followingi.  Technical Feasibility
 ii.  Economical Feasibility
 iii.  Operational Feasibility
-i)  Technical Feasibility:
+
+### i)  Technical Feasibility:
 Since the project is design with PHP as code behind and MySQL as backend, it is easy to install 
 in the systems whenever needed.  It is more  efficient, easy and user friendly to understand by 
 almost  everyone.  Huge  amount  of  data  can  be  handled  efficiently  using  MySQL  as  backend. 
 Hence this project has good technical feasibility. As per the technical aspect the project NSTU 
 Admission Test Volunteering is technically suitable forth user as well as the developer.
 
-### ii)  Economical Feasibility:  Economic feasibility is mainly  concern with the cost incurred during the 
+### ii)  Economical Feasibility: 
+Economic feasibility is mainly  concern with the cost incurred during the 
 implementation of the software. Since the project is developed using PHP and MySQL which is 
 more  commonly  available  and  even  the  cost  involved  in  the  installation  process  is  not  high. 
 Similarly it is to recruit persons for operating the software. Since almost all the people are aware 
